@@ -49,13 +49,14 @@ class FactListFragment : BaseFragment() {
     }
 
     private fun initObserver() {
-        // There are 2 ways to observe
-        // 1. Using live data
-//        factsViewModel.liveData.observe(viewLifecycleOwner, Observer {
-//            handleFactListResponse(it)
-//        })
-
-        // 2. Using single live data
+        /*
+        There are 2 ways to observe
+        1. Using live data
+        factsViewModel.liveData.observe(viewLifecycleOwner, Observer {
+        handleFactListResponse(it)
+        })
+        2. Using single live data
+        */
         factsViewModel.singleLiveData.takeUnless { it.hasActiveObservers() }
             ?.observe(viewLifecycleOwner, Observer {
                 handleFactListResponse(it)
@@ -113,9 +114,7 @@ class FactListFragment : BaseFragment() {
         progressBar.visibility = GONE
         recyclerView.visibility = VISIBLE
         tvEmpty.visibility = GONE
-        if (swipeRefresh.isRefreshing) {
-            swipeRefresh.isRefreshing = false
-        }
+        if (swipeRefresh.isRefreshing) swipeRefresh.isRefreshing = false
     }
 
     private fun showFactList(factsResponse: FactsResponse?) {
