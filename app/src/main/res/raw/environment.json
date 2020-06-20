@@ -1,0 +1,29 @@
+[
+  {
+    "type": "MOCK",
+    "apiUrl": "Local mock server address goes here!"
+  },{
+    "type": "REMOTEMOCK",
+    "apiUrl": "Url of Mock hosted at remote goes here!"
+  },
+  {
+    "type": "LOOPBACK",
+    "apiUrl": "http://127.0.0.1:4000/"
+  },
+  {
+    "type": "UAT",
+    "apiUrl": "https://UAT url goes here!"
+  },
+  {
+    "type": "SIT",
+    "apiUrl": "https://SIT Url"
+  },
+  {
+    "type": "STAGING",
+    "apiUrl": "https://Staging url"
+  },
+  {
+    "type": "PROD",
+    "apiUrl": "https://production url"
+  }
+]

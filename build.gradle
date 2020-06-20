@@ -1,0 +1,110 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.kotlin_version = "1.3.72"
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        def nav_version = "2.2.1"
+        classpath "com.android.tools.build:gradle:4.0.0"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+ext {
+    // sdk
+    compileSdkVer = 28
+    targetSdkVer = 28
+    minSdkVer = 22
+
+    //Version
+    androidx = '1.1.0'
+    cardview = '1.0.0'
+    retrofit = '2.8.1'
+    okHttp = '4.4.0'
+    jUnit = '4.12'
+    testRunner = '1.0.2'
+    espresso = '3.2.0'
+    constraintLayout = '1.1.3'
+    picasso = '2.71828'
+    picassoDownloader = '1.1.0'
+    mockito = '2.20.1'
+    ktx = '1.2.0'
+    legacy = '1.0.0'
+    navVersion = '2.2.1'
+    lifeCycleVersion = '2.2.0'
+    lifeCycleExtensionVersion = '2.1.0'
+    roomVersion = '2.2.5'
+    preferences = '1.1.0'
+    palette = '1.0.0'
+    safeRoomVersion = '1.3.0'
+
+    //Support Libraries dependencies
+    supportDependencies = [
+            appCompat         : "androidx.appcompat:appcompat:${androidx}",
+            recyclerView      : "androidx.recyclerview:recyclerview:${androidx}",
+            cardView          : "androidx.cardview:cardview:${cardview}",
+            constraintLayout  : "androidx.constraintlayout:constraintlayout:${constraintLayout}",
+            legacySupport     : "androidx.legacy:legacy-support-v4:${legacy}",
+            swipeRefresh      : "androidx.swiperefreshlayout:swiperefreshlayout:${legacy}",
+            palette           : "androidx.palette:palette:${palette}",
+
+            // Navigation graph
+            fragmentNav       : "androidx.navigation:navigation-fragment-ktx:${navVersion}",
+            navUi             : "androidx.navigation:navigation-ui-ktx:${navVersion}",
+
+            // Preferences
+            preferences       : "androidx.preference:preference-ktx:${preferences}",
+
+            // View model
+            viewModel         : "androidx.lifecycle:lifecycle-viewmodel-ktx:${lifeCycleVersion}",
+
+            // Live Data
+            liveData          : "androidx.lifecycle:lifecycle-livedata-ktx:${lifeCycleVersion}",
+
+            // Life cycle Extension
+            lifeCycleExtension: "androidx.lifecycle:lifecycle-extensions:${lifeCycleVersion}",
+
+            // Room
+            room              : "androidx.room:room-runtime:${roomVersion}",
+            roomCompiler      : "androidx.room:room-compiler:${roomVersion}",
+            roomCoroutine     : "androidx.room:room-ktx:${roomVersion}",
+            safeRoom          : "com.commonsware.cwac:saferoom.x:${safeRoomVersion}",
+
+            // Retrofit, okhttp, gson & picasso
+            retrofit          : "com.squareup.retrofit2:retrofit:${retrofit}",
+            okHttpLogger      : "com.squareup.okhttp3:logging-interceptor:${okHttp}",
+            okHttpDownloader  : "com.squareup.okhttp3:okhttp:${okHttp}",
+            gson              : "com.squareup.retrofit2:converter-gson:${retrofit}",
+            picasso           : "com.squareup.picasso:picasso:${picasso}",
+            picassoDownloader : "com.jakewharton.picasso:picasso2-okhttp3-downloader:${picassoDownloader}",
+
+            // jUnit and other test suits
+            jUnit             : "junit:junit:${jUnit}",
+            testRunner        : "com.android.support.test:runner:${testRunner}",
+            testRules         : "com.android.support.test:rules:${testRunner}",
+            espresso          : "com.android.support.test.espresso:espresso-core:${espresso}",
+            mockito           : "org.mockito:mockito-core:${mockito}",
+
+            ktx               : "androidx.core:core-ktx:${ktx}",
+            ktLib             : "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
+
+
+    ]
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

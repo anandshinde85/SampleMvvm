@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="row"
+            type="com.anand.mvvmskeletonarchitecture.networking.facts.Rows" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{row.title}"
+                    android:textColor="@android:color/holo_blue_light"
+                    tools:text="This is title text" />
+
+                <ImageView
+                    android:id="@+id/ivChevron"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvTitle"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_chevron" />
+
+                <ImageView
+                    android:id="@+id/ivIcon"
+                    android:layout_width="@dimen/image_width"
+                    android:layout_height="@dimen/image_height"
+                    android:layout_below="@id/tvTitle"
+                    android:layout_toStartOf="@id/ivChevron"
+                    android:layout_toLeftOf="@id/ivChevron"
+                    android:imageUrl="@{row.imageHref}"
+                    android:importantForAccessibility="no" />
+
+                <TextView
+                    android:id="@+id/tvDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvTitle"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toStartOf="@id/ivIcon"
+                    android:layout_toLeftOf="@id/ivIcon"
+                    android:text="@{row.description}"
+                    tools:text="This is description" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</layout>

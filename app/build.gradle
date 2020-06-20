@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'androidx.navigation.safeargs'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion compileSdkVer
+    buildToolsVersion "29.0.3"
+
+    dataBinding {
+        enabled = true
+    }
+
+    defaultConfig {
+        applicationId "com.anand.mvvmskeletonarchitecture"
+        minSdkVersion minSdkVer
+        targetSdkVersion targetSdkVer
+        versionCode 1
+        versionName "1.0"
+
+
+        buildConfigField "String", "API_URL", "\"App_url\""
+
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                        "room.incremental"     : "true",
+                        "room.expandProjection": "true"]
+            }
+        }
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url "https://s3.amazonaws.com/repo.commonsware.com" }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation supportDependencies.ktLib
+    implementation supportDependencies.ktx
+    implementation supportDependencies.appCompat
+    implementation supportDependencies.constraintLayout
+    implementation supportDependencies.legacySupport
+    implementation supportDependencies.swipeRefresh
+    implementation supportDependencies.fragmentNav
+    implementation supportDependencies.navUi
+    implementation supportDependencies.liveData
+    implementation supportDependencies.retrofit
+    implementation supportDependencies.picasso
+    implementation supportDependencies.picassoDownloader
+    implementation supportDependencies.gson
+    implementation supportDependencies.okHttpDownloader
+    implementation supportDependencies.okHttpLogger
+    implementation supportDependencies.recyclerView
+    implementation supportDependencies.cardView
+    implementation supportDependencies.lifeCycleExtension
+    implementation supportDependencies.viewModel
+    implementation supportDependencies.room
+    implementation supportDependencies.roomCoroutine
+    implementation supportDependencies.safeRoom
+
+    testImplementation supportDependencies.jUnit
+    androidTestImplementation supportDependencies.testRunner
+    androidTestImplementation supportDependencies.testRules
+    androidTestImplementation supportDependencies.espresso
+
+    kapt supportDependencies.roomCompiler
+
+}
